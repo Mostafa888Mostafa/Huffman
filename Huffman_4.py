@@ -24,3 +24,13 @@ def build_huffman_tree(frequency):
     for char, freq in frequency.items():
         node = HuffmanNode(char, freq)
         heapq.heappush(pq, node)
+
+    while len(pq) > 1:
+        left = heapq.heappop(pq)
+        right = heapq.heappop(pq)
+        merged = HuffmanNode(None, left.frequency + right.frequency)
+        merged.left = left
+        merged.right = right
+        heapq.heappush(pq, merged)
+
+    return pq[0]
