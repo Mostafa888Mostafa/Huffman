@@ -34,3 +34,8 @@ def build_huffman_tree(frequency):
         heapq.heappush(pq, merged)
 
     return pq[0]
+
+def build_huffman_codes(root):
+    codes = {}
+    build_huffman_codes_helper(root, "", codes)
+    return codes
