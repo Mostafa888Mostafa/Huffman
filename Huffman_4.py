@@ -53,3 +53,8 @@ def save_huffman_codes(huffman_codes, output_file):
         for char, code in huffman_codes.items():
             file.write(f"{char}:{code}\n")
 
+def compress(message, output_file, codes_file):
+    frequency = count_frequency(message)
+    huffman_tree = build_huffman_tree(frequency)
+    huffman_codes = build_huffman_codes(huffman_tree)
+
