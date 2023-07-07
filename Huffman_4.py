@@ -58,3 +58,9 @@ def compress(message, output_file, codes_file):
     huffman_tree = build_huffman_tree(frequency)
     huffman_codes = build_huffman_codes(huffman_tree)
 
+    compressed_message = "".join(huffman_codes[char] for char in message)
+
+    with open(output_file, "w") as file:
+        file.write(compressed_message)
+
+    save_huffman_codes(huffman_codes, codes_file)
