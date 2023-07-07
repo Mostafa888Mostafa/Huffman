@@ -47,3 +47,9 @@ def build_huffman_codes_helper(node, code, codes):
         codes[node.char] = code
     build_huffman_codes_helper(node.left, code + "0", codes)
     build_huffman_codes_helper(node.right, code + "1", codes)
+
+def save_huffman_codes(huffman_codes, output_file):
+    with open(output_file, "w") as file:
+        for char, code in huffman_codes.items():
+            file.write(f"{char}:{code}\n")
+
