@@ -18,3 +18,9 @@ def count_frequency(message):
             frequency[char] = 0
         frequency[char] += 1
     return frequency
+
+def build_huffman_tree(frequency):
+    pq = []
+    for char, freq in frequency.items():
+        node = HuffmanNode(char, freq)
+        heapq.heappush(pq, node)
