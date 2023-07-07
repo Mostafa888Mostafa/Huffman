@@ -64,3 +64,14 @@ def compress(message, output_file, codes_file):
         file.write(compressed_message)
 
     save_huffman_codes(huffman_codes, codes_file)
+
+def load_huffman_codes(codes_file):
+    huffman_codes = {}
+
+    with open(codes_file, "r") as file:
+        for line in file:
+            char, code = line.split(":")
+            code = code.strip()
+            huffman_codes[char] = code
+
+    return huffman_codes
