@@ -39,3 +39,11 @@ def build_huffman_codes(root):
     codes = {}
     build_huffman_codes_helper(root, "", codes)
     return codes
+
+def build_huffman_codes_helper(node, code, codes):
+    if node is None:
+        return
+    if node.char is not None:
+        codes[node.char] = code
+    build_huffman_codes_helper(node.left, code + "0", codes)
+    build_huffman_codes_helper(node.right, code + "1", codes)
