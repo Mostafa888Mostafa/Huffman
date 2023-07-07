@@ -93,3 +93,18 @@ def decompress(input_file, codes_file):
                 break
 
     return decoded_message
+
+def main():
+    input_file = input('Enter input file: ')
+    message = ''
+    with open(input_file, "r") as file:
+        for line in file:
+            message += line.strip()
+    compressed_file = input_file.split('.')[0] + '.compressed'
+    compress(message, compressed_file, "huffman_codes.txt")
+
+    decoded_message = decompress(compressed_file, "huffman_codes.txt")
+    print(decoded_message)
+    
+if __name__ == '__main__':
+    main() 
