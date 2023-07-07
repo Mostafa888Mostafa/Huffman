@@ -75,3 +75,21 @@ def load_huffman_codes(codes_file):
             huffman_codes[char] = code
 
     return huffman_codes
+
+def decompress(input_file, codes_file):
+    huffman_codes = load_huffman_codes(codes_file)
+
+    with open(input_file, "r") as file:
+        compressed_message = file.read()
+
+    decoded_message = ""
+    current_code = ""
+    for bit in compressed_message:
+        current_code += bit
+        for char, code in huffman_codes.items():
+            if code == current_code:
+                decoded_message += char
+                current_code = ""
+                break
+
+    return decoded_message
